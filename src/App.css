@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background-color: #0f1015;
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.br-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Лобби и Проигрыш */
+.lobby-screen, .overlay-screen {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(15, 16, 21, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.title {
+  font-size: 3rem;
+  color: #ff9f43;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 159, 67, 0.4);
+}
+
+.btn-primary {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #ff9f43;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: #ffb15e;
+}
+
+/* HUD */
+.hud-container {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hud-card {
+  background: rgba(30, 30, 40, 0.85);
+  padding: 10px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.zone-warning {
+  color: #ff5252;
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+.game-canvas {
+  border: 2px solid #333;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  cursor: crosshair;
+}
+
+/* Экран победы (Neon / Cyberpunk) */
+.victory-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.victory-title {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: 12px;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 10px #00fff5,
+    0 0 20px #00fff5,
+    0 0 40px #00fff5,
+    0 0 80px #00fff5;
+  animation: glowPulse 1.5s infinite alternate;
+  margin-bottom: 10px;
+}
+
+.victory-subtitle {
+  font-size: 1.5rem;
+  color: #ff2e63;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(255, 46, 99, 0.7);
+}
+
+.restart-btn {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0f0f15;
+  background: #00fff5;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 255, 245, 0.6);
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 255, 245, 1);
+  background: #ffffff;
+}
+
+@keyframes glowPulse {
+  from {
+    transform: scale(1);
+    text-shadow: 0 0 10px #00fff5, 0 0 20px #00fff5, 0 0 40px #00fff5;
+  }
+  to {
+    transform: scale(1.05);
+    text-shadow: 0 0 20px #00fff5, 0 0 40px #00fff5, 0 0 80px #00fff5, 0 0 120px #00fff5;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
